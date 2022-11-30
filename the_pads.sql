@@ -18,10 +18,13 @@ ordered alphabetically.
 Note: There will be at least two entries in the table for each type of
 occupation. */
 
+-- First selection with names and first letter of occupation.
 SELECT Concat(NAME, "(", LEFT(occupation, 1), ")")
 FROM   occupations
 ORDER  BY NAME;
 
+-- Second selection with count of persons with occupation and name of
+-- occupation.
 SELECT Concat("there are a total of", Count(occupation), "", Lower(occupation)
        , "s.")
 FROM   occupations
