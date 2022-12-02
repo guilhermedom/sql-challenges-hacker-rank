@@ -9,6 +9,10 @@ Root: If node is root node.
 Leaf: If node is leaf node.
 Inner: If node is neither root nor leaf node. */
 
+-- Start with root because it is also an inner node. For other inner
+-- nodes, the condition is that they are the parent of some other node.
+-- Therefore, they must be in the p column of the bst table. Remaining
+-- nodes must be of leaf type.
 SELECT n,
        CASE
          WHEN p IS NULL THEN "root"
