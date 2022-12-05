@@ -13,7 +13,10 @@ marks in ascending order.
 
 Write a query to help Eve. */
 
+-- Grades are discrete values going from 1 to 10 and their are buckets
+-- for marks ranges. Marks can be used to find the grades.
 SELECT CASE
+		 -- Ignore students with a grade smaller than 8. 
          WHEN G.grade < 8 THEN NULL
          ELSE S.NAME
        END,
@@ -24,4 +27,6 @@ FROM   students S
                ON S.marks BETWEEN G.min_mark AND G.max_mark
 ORDER  BY G.grade DESC,
           S.NAME,
+		  -- ORDER BY marks works for students with grade (1-7) because
+		  -- their names are selected as the same name, NULL.
           S.marks;
