@@ -8,6 +8,10 @@ the wands that Ron's interested in, sorted in order of descending power.
 If more than one wand has same power, sort the result in order of
 descending age. */
 
+-- "code" and "age" have a 1 to 1 relationship. Because of this, we can
+-- group by both of them at the same time as needed. We select "code" in
+-- the first query so that we can perform a NATURAL JOIN in the second
+-- query.
 WITH cheap_wands
      AS (SELECT code,
                 age,
@@ -18,6 +22,10 @@ WITH cheap_wands
          GROUP  BY code,
                    age,
                    power)
+-- Since we have already aggregated the min coins needed for each wand,
+-- in the second query we join again to get the id for each wand and
+-- order the result as requested. Note that there are no duplicate wands
+-- with same age and power.
 SELECT id,
        age,
        coins_needed,
