@@ -9,6 +9,8 @@ got offered a higher salary than them. Names must be ordered by the
 salary amount offered to the best friends. It is guaranteed that no two
 students got same salary offer. */
 
+-- Perform a self join on table "packages" using "friend_id" and "id" to
+-- compare the salary of every student with his best friend's.
 SELECT NAME
 FROM   students S
        INNER JOIN friends F
